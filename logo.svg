@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 56" fill="none" role="img" aria-label="Sistema Gestion">
+  <!-- Marca: capas / layers (silueta legible incluso en blanco) -->
+  <path d="M27 7 49 18 27 29 5 18 27 7Z" fill="#2547BA"/>
+  <path d="M6 24 27 34 48 24" stroke="#10266B" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M6 31 27 41 48 31" stroke="#4f6fd6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Wordmark -->
+  <text x="62" y="25" font-family="Segoe UI, Roboto, Arial, sans-serif" font-size="20" font-weight="700" fill="#10266B">Sistema</text>
+  <text x="62" y="45" font-family="Segoe UI, Roboto, Arial, sans-serif" font-size="15" font-weight="600" fill="#2547BA" letter-spacing="4">GESTION ID</text>
+</svg>

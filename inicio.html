@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sistema Gestion | ID</title>
+    <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/app.css" />
+</head>
+<body data-page="inicio">
+    <div class="app-pagina">
+        <div class="app-barra-lateral" id="sidebar"></div>
+        <main class="app-principal">
+            <div id="topbar"></div>
+            <article class="app-contenido">
+
+                <div class="page-header">
+                    <div class="ph-left">
+                        <div class="ph-icon"><i class="bi bi-layers-fill"></i></div>
+                        <div>
+                            <h1>Gestion de Planos</h1>
+                            <p class="ph-sub">Busca, registra y consulta los planos del sistema</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Acciones: agregar plano -->
+                <div class="app-contenedor-acciones">
+                    <label class="app-btn-agregar" id="btnAgregarPlano" title="Agregar nuevo plano" style="cursor:pointer;">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
+                        <span>Agregar plano</span>
+                        <input type="file" id="fileUploaderPlano" style="display:none" accept="application/pdf,image/*" />
+                    </label>
+                    <button class="app-btn-enviar" type="button">Enviar</button>
+                </div>
+
+                <div class="app-gestor-documentos">
+                    <!-- PANEL DE FILTROS -->
+                    <div class="app-panel-filtros">
+                        <div class="app-encabezado-panel">
+                            <h5><i class="bi bi-funnel-fill"></i> Filtros de Busqueda</h5>
+                        </div>
+                        <div class="app-cuerpo-panel">
+                            <div class="app-filtros-grid" id="filtrosPlanos">
+                                <div class="app-filtro-item">
+                                    <label class="form-label">Fecha</label>
+                                    <input class="form-control" type="date" id="fFecha" />
+                                </div>
+                                <div class="app-filtro-item">
+                                    <label class="form-label">Descripcion</label>
+                                    <input class="form-control" id="fDescripcion" placeholder="Descripcion" />
+                                </div>
+                                <div class="app-filtro-item">
+                                    <label class="form-label">Identificador de Plano</label>
+                                    <input class="form-control" id="fIdPlano" placeholder="Numero de Plano" />
+                                </div>
+                                <div class="app-filtro-item">
+                                    <label class="form-label">Tamano</label>
+                                    <select class="form-select" id="fTamano">
+                                        <option value="">-- Seleccionar --</option>
+                                        <option value="A0">A0</option>
+                                        <option value="A1">A1</option>
+                                        <option value="A2">A2</option>
+                                        <option value="A3">A3</option>
+                                        <option value="A4">A4</option>
+                                    </select>
+                                </div>
+                                <div class="app-filtro-item">
+                                    <label class="form-label">Revision</label>
+                                    <select class="form-select" id="fRevision">
+                                        <option value="">-- Seleccionar --</option>
+                                        <option>A</option><option>B</option><option>C</option><option>D</option><option>E</option>
+                                    </select>
+                                </div>
+                                <div class="app-filtro-item">
+                                    <label class="form-label">Sub-Revision</label>
+                                    <select class="form-select" id="fSubRevision">
+                                        <option value="">Ninguno</option>
+                                        <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+                                    </select>
+                                </div>
+                                <div class="app-filtro-item">
+                                    <label class="form-label">Nombre del dibujante</label>
+                                    <input class="form-control" id="fDibujante" placeholder="Nombre del dibujante" />
+                                </div>
+                                <div class="app-filtro-item app-filtro-botones">
+                                    <button class="btn btn-primary w-100 app-boton-buscar" type="button" id="btnBuscar">Buscar</button>
+                                </div>
+                            </div>
+                            <div class="app-filtros-acciones">
+                                <button class="btn btn-link btn-sm text-decoration-none" type="button" id="btnLimpiar">Limpiar filtros</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RESULTADOS -->
+                    <div class="app-seccion-resultados">
+                        <div class="app-encabezado-resultados">
+                            <h5 class="mb-0"><i class="bi bi-table"></i> Resultados de la Busqueda</h5>
+                            <div class="d-flex align-items-center gap-2">
+                                <button class="btn btn-outline-secondary btn-sm d-flex align-items-center justify-content-center" style="width:32px;height:32px;padding:0;" title="Editar seleccionados">
+                                    <span class="app-icono app-icono-editar"></span>
+                                </button>
+                                <button class="btn btn-outline-secondary btn-sm d-flex align-items-center justify-content-center" style="width:32px;height:32px;padding:0;" title="Actualizar estado">
+                                    <span class="app-icono app-icono-actualizar"></span>
+                                </button>
+                                <span class="badge bg-secondary" id="planosContador">0 registro(s) encontrado(s)</span>
+                            </div>
+                        </div>
+
+                        <div class="app-contenedor-tabla">
+                            <table class="table table-hover table-bordered align-middle">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center" style="width:50px;"><i class="bi bi-check-square"></i></th>
+                                        <th class="text-center" style="min-width:120px;">Fecha</th>
+                                        <th class="text-center">Descripcion</th>
+                                        <th class="text-center">ID Plano</th>
+                                        <th class="text-center" style="width:80px;">Tamano</th>
+                                        <th class="text-center" style="width:80px;">Revision</th>
+                                        <th class="text-center" style="width:90px;">Sub-Revision</th>
+                                        <th class="text-center">Dibujante</th>
+                                        <th class="text-center">Ver</th>
+                                        <th class="text-center" style="width:120px;">Estado</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="app-tbody-wrapper" id="planosBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </article>
+        </main>
+    </div>
+    <script src="js/app.js"></script>
+</body>
+</html>

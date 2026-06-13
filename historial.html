@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sistema Gestion | Historial de Planos</title>
+    <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/app.css" />
+</head>
+<body data-page="historial">
+    <div class="app-pagina">
+        <div class="app-barra-lateral" id="sidebar"></div>
+        <main class="app-principal">
+            <div id="topbar"></div>
+            <article class="app-contenido">
+                <div class="page-header">
+                    <div class="ph-left">
+                        <div class="ph-icon"><i class="bi bi-clock-history"></i></div>
+                        <div>
+                            <h1>Historial de Planos</h1>
+                            <p class="ph-sub">Versiones y cambios registrados en el sistema</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="app-contenedor-principal">
+
+                    <!-- PANEL DE FILTROS -->
+                    <div class="app-panel-filtros">
+                        <div class="app-encabezado-panel">
+                            <h5><i class="bi bi-funnel-fill"></i> Filtros de Busqueda</h5>
+                        </div>
+                        <div class="app-cuerpo-panel">
+                            <div class="app-filtros-grid">
+                                <div class="app-filtro-item">
+                                    <label class="form-label" for="filtroFechaDesde">Desde:</label>
+                                    <input type="date" id="filtroFechaDesde" class="form-control">
+                                </div>
+                                <div class="app-filtro-item">
+                                    <label class="form-label" for="filtroFechaHasta">Hasta:</label>
+                                    <input type="date" id="filtroFechaHasta" class="form-control">
+                                </div>
+                                <div class="app-filtro-item">
+                                    <label class="form-label" for="filtroAutor">Autor:</label>
+                                    <input type="text" id="filtroAutor" class="form-control" placeholder="Nombre del autor">
+                                </div>
+                                <div class="app-filtro-item">
+                                    <label class="form-label" for="filtroEstado">Estado:</label>
+                                    <select id="filtroEstado" class="form-select">
+                                        <option value="">-- Todos --</option>
+                                        <option value="Pendiente">Pendiente</option>
+                                        <option value="Aprobado">Aprobado</option>
+                                        <option value="Rechazado">Rechazado</option>
+                                        <option value="Revision">En Revision</option>
+                                    </select>
+                                </div>
+                                <div class="app-filtro-botones">
+                                    <button class="btn btn-primary app-boton-buscar">Filtrar</button>
+                                    <button class="btn btn-outline-secondary app-boton-limpiar">Limpiar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RESULTADOS -->
+                    <div class="app-seccion-resultados">
+                        <div class="app-encabezado-seccion">
+                            <h5><i class="bi bi-list-ul"></i> Historial de Planos</h5>
+                            <span class="app-contador">3 registro(s) encontrado(s)</span>
+                        </div>
+
+                        <table class="table table-hover table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Fecha</th>
+                                    <th>Version</th>
+                                    <th>Descripcion</th>
+                                    <th>Autor</th>
+                                    <th>Cambios</th>
+                                    <th>Estado</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>23/05/2026</td>
+                                    <td><span class="app-badge-version">v1</span></td>
+                                    <td>Plano Inicial</td>
+                                    <td>Juan Garcia</td>
+                                    <td><small>Creacion del documento</small></td>
+                                    <td><span class="estado-badge estado-aprobado"><span class="dot"></span>Aprobado</span></td>
+                                    <td class="app-celda-acciones">
+                                        <button class="btn btn-sm btn-outline-primary app-boton-ver" title="Ver detalles">Ver</button>
+                                        <button class="btn btn-sm btn-outline-secondary app-boton-descargar" title="Descargar version">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                                <polyline points="7 10 12 15 17 10"></polyline>
+                                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                                            </svg>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>22/05/2026</td>
+                                    <td><span class="app-badge-version">v2</span></td>
+                                    <td>Plano Inicial</td>
+                                    <td>Maria Lopez</td>
+                                    <td><small>Ajuste de dimensiones</small></td>
+                                    <td><span class="estado-badge estado-aprobado"><span class="dot"></span>Aprobado</span></td>
+                                    <td class="app-celda-acciones">
+                                        <button class="btn btn-sm btn-outline-primary app-boton-ver" title="Ver detalles">Ver</button>
+                                        <button class="btn btn-sm btn-outline-secondary app-boton-descargar" title="Descargar version">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                                <polyline points="7 10 12 15 17 10"></polyline>
+                                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                                            </svg>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>21/05/2026</td>
+                                    <td><span class="app-badge-version">v3</span></td>
+                                    <td>Plano Inicial</td>
+                                    <td>Carlos Rodriguez</td>
+                                    <td><small>Correccion de tolerancias</small></td>
+                                    <td><span class="estado-badge estado-revision"><span class="dot"></span>En Revision</span></td>
+                                    <td class="app-celda-acciones">
+                                        <button class="btn btn-sm btn-outline-primary app-boton-ver" title="Ver detalles">Ver</button>
+                                        <button class="btn btn-sm btn-outline-secondary app-boton-descargar" title="Descargar version">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                                <polyline points="7 10 12 15 17 10"></polyline>
+                                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                                            </svg>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </article>
+        </main>
+    </div>
+    <script src="js/app.js"></script>
+</body>
+</html>
